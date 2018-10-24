@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Zion Guild Rooster</title>
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=MedievalSharp">
+    <link rel="stylesheet" type="text/css" href="zionstyles.css">
+    <style>
+    .carousel-caption{
+        text-align: left;
+        height: 770px;
+        font-family: 'MedievalSharp',serif;
+        font-size: 30px;
+
+    }
+    </style>
+</head>
+
+<body class="bg">
+
+    <ul>
+        <li><a class="active" href="main.html">Home</a></li>
+        <li><a href="guildraid.html">The Team</a></li>
+        <li><a href="Streams.html">Streams</a></li>
+        <li><a href="ApplicationForm.html">Recruitment</a></li>
+        <li><a href="#main.html#News">News</a></li>
+        <li><img src="Zion.jpg" height="42" width="82" align="center" /></li>
+    </ul>
+
+    <div class="container">
+    <h2>Zïon Rooster</h2>
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+    <ol id="targetslides" class="carousel-indicators">
+
+    </ol>
+
+    <!-- Wrapper for slides -->
+
+
+
+    <div id="wowimages" class="carousel-inner">
+
+
+    </div>
+
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
+    </a>
+    </div>
+    </div>
+
+    <script>
+
+        var blizurl = "https://eu.api.battle.net/wow/guild/Silvermoon/Z%C3%AFon?fields=members&locale=en_GB&apikey=g7py3pkf2dd9zcrxeymsmn76dn8rb2wm";
+        var avgilvlurl1 = "https://eu.api.battle.net/wow/character/Silvermoon/";
+        var avgilvlurl2 = "?fields=items&locale=en_GB&apikey=g7py3pkf2dd9zcrxeymsmn76dn8rb2wm";
+        var thumbnailurlconc = "https://render-eu.worldofwarcraft.com/character/";
+        var ilvl=[];
+        var names=[];
+        var landscapes=[];
+
+        $.getJSON(blizurl).done(function(data){
+            member = data;
+            useData();
+        });
+
+        function useData(){
+
+            for(var i = 0; i< member.members.length;i++){
+                if (member.members[i].rank <5){
+                    names.push(member.members[i].character.name);
+
+                    landscapes.push(thumbnailurlconc+member.members[i].character.thumbnail.replace("avatar","main"));
+                }
+            }
+
+            buildCarousel(names, landscapes, ilvl);
+        }
+
+        function buildCarousel(names, landscapes, ilvl){
+
+            for (var i=0;i<landscapes.length;i++){
+
+                    if(i == 0){
+                        $("#targetslides").append(`<li data-target="#myCarousel" data-slide-to="${i}" class="active"></li>`);
+                        $('#wowimages').append(`<div class="item active">
+                                            <img src='${encodeURI(landscapes[i])}' style="width:100%;"/>
+                                            <div class="carousel-caption"><p>${names[i]}</p></div>
+                                            </div>`);
+                       }else{
+                           $("#targetslides").append(`<li data-target="#myCarousel" data-slide-to="${i}"></li>`);
+                           $('#wowimages').append(`<div class="item">
+                                            <img src='${encodeURI(landscapes[i])}' style="width:100%;"/>
+                                            <div class="carousel-caption"><p>${names[i]}</p></div>
+                                            </div>`);
+                       }
+
+
+            }
+
+        }
+
+
+    </script>
+
+</body>
+
+</html>

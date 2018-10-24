@@ -1,0 +1,97 @@
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+        position: -webkit-sticky;
+        position: sticky;
+    }
+
+    li {
+        float: right;
+
+    }
+
+    li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+    li a:hover:not(.active) {
+        background-color: #111;
+    }
+
+    li:nth-child(6){
+        float: left;
+        padding-left: 3px;
+    }
+
+    .active {
+        background-color: #4CAF50;
+    }
+    .bg {
+        background-color:black;
+
+    }
+    .toppage{
+        padding-top: 200px;
+        background-image: url(teldrassil.jpg);
+        height: 100%;
+        background-position: center;
+        background-repeat: repeat;
+        background-size: cover;
+    }
+    pre{
+        color: aliceblue;
+        font-size: 20px;
+        text-align: center;
+        font-family: "MedievalSharp";
+    }
+    h1{
+        text-align: center;
+        color: aliceblue;
+    }
+    .zion{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+.iframe-container{
+        overflow: hidden;
+        padding-top: 56%;
+        position: relative;
+
+    }
+
+.iframe-container iframe{
+        border: 0;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
+.streams{
+        overflow: hidden;
+        padding-top: 56%;
+        position: relative;
+}
+
+.streams iframe{
+        border: 0;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+}
+
+table{
+    margin-left: auto;
+    margin-right: auto;
+}
